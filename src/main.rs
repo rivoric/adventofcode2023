@@ -1,3 +1,5 @@
+pub mod day01;
+
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
@@ -6,16 +8,11 @@ const DEBUG: bool = false;
 
 fn main() {
     let file_path = "input/day01live.txt";
-    let mut parta: u32 = 0;
 
     if let Ok(lines) = read_lines(file_path) {
-        // Consumes the iterator, returns an (Optional) String
-        for readline in lines {
-            if let Ok(line) = readline {
-                parta += aoc::first_last_digit(&line, DEBUG);
-            }
-        }
+        let (parta, partb) = day01::day01(lines, DEBUG);
         println!("Part A: {}", parta);
+        println!("Part B: {}", partb);
     }
 }
 
